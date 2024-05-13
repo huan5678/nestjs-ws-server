@@ -8,7 +8,13 @@ import {
 import type { Server, Socket } from 'socket.io';
 import { Message } from '../message/entities/message.entity';
 
-@WebSocketGateway({ cors: true })
+@WebSocketGateway({
+  cors: {
+    origin: 'http://localhost:5173',
+    credentials: true,
+    methods: ['GET', 'POST', 'OPTIONS'],
+  },
+})
 export class SocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
   server: Server;

@@ -42,10 +42,7 @@ async function bootstrap() {
       },
     },
   });
-  app.enableCors({
-    credentials: true,
-    origin: '*',
-  });
+  app.enableCors();
   await app.listen(3002, '0.0.0.0');
 
   logger.verbose(`APP IS RUNNING ON PORT ${await app.getUrl()}`);
